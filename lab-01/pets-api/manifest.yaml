@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: random-pets
+  annotations:
+    run.googleapis.com/ingress: all
+    run.googleapis.com/authentication: none
+spec:
+  template:
+    spec:
+      containers:
+        - name: random-pets
+          image: asia-northeast1-docker.pkg.dev/${PROJECT_ID}/app-repo/random-pets
+          ports:
+          - containerPort: 5000
